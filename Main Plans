@@ -1,0 +1,13 @@
+Here's the info from the image Anwar sent to the group chat
+
+1. User Interaction: Implement a simple text-based system that allows users to perform the following actions
+  * Add a new book to the library
+  * List all books in the library
+  * Search for a book by title or author
+  * Remove a book from the library
+2. Data Storage: Use files to store the information about the books. Each book's data should be stored in a clear and structured format, such as CSV or JSON.
+3. Collections: Use lists or dictionaries to manage the books in the library. You can create a class to represent each book with attributes like title, author, ISBN, and so on.
+4. Functions: Design various functions to perform specific actions within your programs, such as adding a book, listing all books, searching for books, and removing books. Ensure
+   that these functions are well-documented with comments and have clear and understandable code.
+5. Classes: Create a Book class to represent individual books. The class should encapsulate the book's attributes and provide methos for interacting with the book objects.
+6. Loops and Selection Statements: Use loops for iterating through the library and selection statemetns to make decisions, such as whether to add a book or search for a book.
