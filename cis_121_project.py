@@ -46,12 +46,13 @@ def sort_books(method):
 		library = open("book_library.txt", 'w+')
 		##WIP
 		
-
+#Initial question sequence
 print("What do you want to do?")
 print("add - Add a book")
 print("sort - Sort the books")
 user_task = input()
 
+#Task loop
 while user_task != 'quit':
 	if user_task == 'add':
 		user_book_name = input("Book name: ")
@@ -63,7 +64,7 @@ while user_task != 'quit':
 		
 		add_book(newbook)
 
-	if user_task == 'sort':
+	elif user_task == 'sort':
 		print("How do you want to sort it?")
 		print("alphabet")
 		print("author")	
@@ -73,7 +74,8 @@ while user_task != 'quit':
 		user_method = input()
 		
 		sort_books(user_method)
-
+	
+	#Return to question sequence
 	print("What do you want to do?")
 	print("add - Add a book")
 	print("sort - Sort the books")
