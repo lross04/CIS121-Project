@@ -29,7 +29,6 @@ class Book:
 		return self.genre
 		
 #List of functions
-
 def add_book(book):
 	''' This function adds books of a given library '''
 	library = open("book_library.txt", 'a')
