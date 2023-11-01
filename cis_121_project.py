@@ -36,7 +36,7 @@ def add_book(book):
 	newbook_name = book.get_name()
 	newbook_author = book.get_author()
 	newbook_date = book.get_date()
-	newbook_genre = book.get_date()
+	newbook_genre = book.get_genre()
 	library.write(f'{newbook_name}\t{newbook_author}\t{newbook_date}\t{newbook_genre}\n')
 	library.close()
 
