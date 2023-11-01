@@ -5,6 +5,7 @@ Youssef Abdelaziz
 10/31/2023
 
 CIS 121 Project -- Digital Book Library
+
 '''
 
 #Book class with defining attributes
@@ -32,7 +33,7 @@ class Book:
 		
 #List of functions
 def add_book(book):
-	''' This function adds books of a given library '''
+	''' This function adds a given book to the book library '''
 	library = open("book_library.txt", 'a')
 	newbook_name = book.get_name()
 	newbook_author = book.get_author()
