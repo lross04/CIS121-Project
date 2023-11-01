@@ -27,6 +27,8 @@ class Book:
 		
 	def get_genre(self):
 		return self.genre
+
+	#Book 'setters' (TODO)
 		
 #List of functions
 def add_book(book):
