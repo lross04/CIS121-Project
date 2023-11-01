@@ -50,6 +50,7 @@ def sort_books(method):
 print("What do you want to do?")
 print("add - Add a book")
 print("sort - Sort the books")
+print("quit - Quit")
 user_task = input()
 
 #Task loop
@@ -79,4 +80,5 @@ while user_task != 'quit':
 	print("What do you want to do?")
 	print("add - Add a book")
 	print("sort - Sort the books")
+	print("quit - Quit")
 	user_task = input()
