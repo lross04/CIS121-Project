@@ -40,16 +40,61 @@ def add_book(book):
 	library.write(f'{newbook_name}\t{newbook_author}\t{newbook_date}\t{newbook_genre}\n')
 	library.close()
 
-def sort_books(method):
-	''' This function sorts books of a given library file with a given method. Methods: alphabet, author, date, genre '''
-	if method == 'alphabet':
-		library = open("book_library.txt", 'w+')
-		##WIP
+def find_book(method):
+	''' This function returns books within the library given a category. Categories: name, author'''
+	if method == 'name':
+		user_find_name = input("Book name (exact): ")
+		#Open-close library sequence to get length. Idk if I have to do this
+		library = open("book_library.txt", 'r')
+		num_books = len(library.readlines())
+		library.close()
+		
+		#Reopen library file for actual modification
+		library = open("book_library.txt", 'r')
+		
+		common_items = 0
+		for line in range(num_books):
+			book = library.readline()
+			book = book.strip()
+			
+			current_book = book.split('\t')
+			
+			if current_book[1] == user_find_name:
+				common_items += 1
+				if common_items > 1:
+					return book
+		if common_items < 1:
+			print("Could not find book")
+		
+	elif method == 'author':
+		user_find_author = input("Author name: ")
+		#Open-close library sequence to get length. Idk if I have to do this
+		library = open("book_library.txt", 'r')
+		num_books = len(library.readlines())
+		library.close()
+		
+		#Reopen library file for actual modification
+		library = open("book_library.txt", 'r')
+		
+		common_items = 0
+		for line in range(num_books):
+			book = library.readline()
+			book = book.strip()
+			
+			current_book = book.split('\t')
+			
+			if current_book[1] == user_find_author:
+				common_items += 1
+				if common_items > 1:
+					return book
+		if common_items < 1:
+			print("Could not find book")
+		
 		
 #Initial question sequence
 print("What do you want to do?")
 print("add - Add a book")
-print("sort - Sort the books")
+print("find - Find a book")
 print("quit - Quit")
 user_task = input()
 
@@ -65,20 +110,18 @@ while user_task != 'quit':
 		
 		add_book(newbook)
 
-	elif user_task == 'sort':
-		print("How do you want to sort it?")
-		print("alphabet")
-		print("author")	
-		print("date")
-		print("genre")
+	elif user_task == 'find':
+		print("How do you want to look for your book?")
+		print("name - By name")
+		print("author - By author")	
 					
 		user_method = input()
 		
-		sort_books(user_method)
+		print(find_book(user_method))
 	
 	#Return to question sequence
 	print("What do you want to do?")
 	print("add - Add a book")
-	print("sort - Sort the books")
+	print("find - Find a book")
 	print("quit - Quit")
 	user_task = input()
