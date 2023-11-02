@@ -39,7 +39,7 @@ def add_book(book):
 	newbook_author = book.get_author()
 	newbook_date = book.get_date()
 	newbook_genre = book.get_genre()
-	library.write(f'{newbook_name},{newbook_author},{newbook_date},{newbook_genre},\n,')
+	library.write(f'{newbook_name},{newbook_author},{newbook_date},{newbook_genre},\n')
 	library.close()
 
 def find_book(method):
