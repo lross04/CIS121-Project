@@ -21,7 +21,9 @@ user_task = input()
 
 options = ('add', 'find', 'quit')
 
-while user_task not in options:
+if user_task not in options:
+	pass
+else:
 
 	#Task loop
 	while user_task != 'quit':
