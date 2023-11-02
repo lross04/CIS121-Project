@@ -7,100 +7,21 @@ Youssef Abdelaziz
 CIS 121 Project -- Digital Book Library
 
 '''
+from cis_121_project_classes_and_functions import *
 
-#Book class with defining attributes
-class Book:
-	def __init__(self, name, author, date_published, genre):
-		self.name = name
-		self.author = author
-		self.date_published = date_published
-		self.genre = genre
 
-	#Book 'getters'
-	def get_name(self):
-		return self.name
-		
-	def get_author(self):
-		return self.author
-		
-	def get_date(self):
-		return self.date_published
-		
-	def get_genre(self):
-		return self.genre
-		
-#List of functions
-def add_book(book):
-	''' This function adds a given book to the book library '''
-	library = open("book_library.txt", 'a')
-	newbook_name = book.get_name()
-	newbook_author = book.get_author()
-	newbook_date = book.get_date()
-	newbook_genre = book.get_genre()
-	library.write(f'{newbook_name}\t{newbook_author}\t{newbook_date}\t{newbook_genre}\n')
-	library.close()
-
-def find_book(method):
-	''' This function returns books within the library given a category. Categories: name, author'''
-	if method == 'name':
-		user_find_name = input("Book name (exact): ")
-		#Open-close library sequence to get length. Idk if I have to do this
-		library = open("book_library.txt", 'r')
-		num_books = len(library.readlines())
-		library.close()
-		
-		#Reopen library file for actual modification
-		library = open("book_library.txt", 'r')
-		
-		common_items = 0
-		for line in range(num_books):
-			book = library.readline()
-			book = book.strip()
-			
-			current_book = book.split('\t')
-			
-			if current_book[1] == user_find_name:
-				common_items += 1
-				if common_items > 1:
-					return book
-		if common_items < 1:
-			print("Could not find book")
-		
-	elif method == 'author':
-		user_find_author = input("Author name: ")
-		#Open-close library sequence to get length. Idk if I have to do this
-		library = open("book_library.txt", 'r')
-		num_books = len(library.readlines())
-		library.close()
-		
-		#Reopen library file for actual modification
-		library = open("book_library.txt", 'r')
-		
-		common_items = 0
-		for line in range(num_books):
-			book = library.readline()
-			book = book.strip()
-			
-			current_book = book.split('\t')
-			
-			if current_book[1] == user_find_author:
-				common_items += 1
-				if common_items > 1:
-					return book
-		if common_items < 1:
-			print("Could not find book")
-		
 		
 #Initial question sequence
 print("What do you want to do?")
 print("add - Add a book")
 print("find - Find a book")
 print("quit - Quit")
+print()
 user_task = input()
 
 #Task loop
 while user_task != 'quit':
-	if user_task == 'add':
+	if user_task == 'add' or user_task == 'Add':
 		user_book_name = input("Book name: ")
 		user_book_author = input("Author: ")
 		user_book_date = input("Year published (YYYY): ")
@@ -114,6 +35,8 @@ while user_task != 'quit':
 		print("How do you want to look for your book?")
 		print("name - By name")
 		print("author - By author")	
+		print("year - By year published")
+		print()
 					
 		user_method = input()
 		
@@ -124,4 +47,5 @@ while user_task != 'quit':
 	print("add - Add a book")
 	print("find - Find a book")
 	print("quit - Quit")
+	print()
 	user_task = input()
