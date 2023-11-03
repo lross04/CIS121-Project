@@ -3,4 +3,6 @@ Every time you change something please update this file with a description of wh
 
 * Removed extra comma at the end of line 42 of classes and functions, moved to front -- 11/2/23 5:20 PM
 
-* Fixed main body problem of code not running with new while loop, changed while to if/else statement -- 11/2/23 6:30 PM
+* Fixed main body problem of code not running with new while loop -- 11/2/23 6:30 PM
+
+* Added new list call to main file and new list function for both author and title for list call. Changed "name" to "title" for all prompts but code has stayed the same. -- 11/2/23 7:45 PM
