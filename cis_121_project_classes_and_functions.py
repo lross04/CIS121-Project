@@ -39,13 +39,13 @@ def add_book(book):
 	newbook_author = book.get_author()
 	newbook_date = book.get_date()
 	newbook_genre = book.get_genre()
-	library.write(f',{newbook_name},{newbook_author},{newbook_date},{newbook_genre},\n')
+	library.write(f',{newbook_name},{newbook_author},{newbook_date},{newbook_genre},\n,')
 	library.close()
 
 def find_book(method):
-	''' This function returns books within the library given a category. Categories: name, author'''
-	if method == 'name':
-		user_find_name = input("Enter the book name (Eaxact): ")
+	''' This function returns books within the library given a category. Categories: name, author, year'''
+	if method == 'title':
+		user_find_name = input("Enter the book title (Eaxact): ")
 		lib_file = open("book_library.csv")
 		library = lib_file.read()
 		library = library.split(",") #Split all items in the library by comma
@@ -89,8 +89,33 @@ def find_book(method):
 				book_with_year = True
 			token += 1
 		if book_with_year == True:
-			library.close()
 			return ""
 		else:
-			library.close()
 			return "There are no books in the library that were published in that year.\n"
+			
+def library_list(method):
+	if method == "title":
+		lib_file = open('book_library.csv')
+		library = lib_file.read().split(',')
+		library.pop(0)
+		token = 0
+		for item in library:
+			if token % 4 == 0:
+				print(library[token])
+			token += 1
+		return ''
+	
+	elif method == "author":
+		lib_file = open('book_library.csv')
+		library = lib_file.read().split(',')
+		library.pop(0)
+		library.pop(0)
+		token = 0
+		author_names = []
+		for item in library:
+			if token % 4 == 0:
+				if item not in author_names:
+					print(library[token])
+				author_names.append(item)
+			token += 1
+		return ''
