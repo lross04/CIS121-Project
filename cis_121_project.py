@@ -44,7 +44,7 @@ while user_task != 'quit':
 		print("title - By title")
 		print("author - By author")	
 		print("year - By year published")
-		print()
+		print("genre - By genre\n")
 					
 		user_method = input()
 		
@@ -54,15 +54,24 @@ while user_task != 'quit':
 	elif user_task == 'list' or user_task == 'List':
 		print("What would you like to list?")
 		print("title - List titles in the library")
-		print("author - List authors in the library\n")
+		print("author - List authors in the library")
+		print("year - List years published in the library")
+		print("genre - List genres in the library\n")
 		method = input()
+		print()
 		if method == 'title':
-			print("Here are all of the titles currently in the library:")
+			print("---Here are all of the titles currently in the library---")
 			print(library_list(method))
 		elif method == 'author':
-			print("Here are all of the authors currently in the library:")
+			print("---Here are all of the authors currently in the library---")
 			print(library_list(method))
-		
+		elif method == 'year':
+			print("---Here are all of the published years currently in the library---")
+			print(library_list(method))
+		elif method == 'genre':
+			print("---Here are all of the genres currently in the library---")
+			print(library_list(method))
+
 	
 	#Return to question sequence
 	input("Press enter to continue...\n")
