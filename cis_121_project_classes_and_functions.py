@@ -7,8 +7,8 @@ Youssef Abdelaziz
 CIS 121 Project -- Digital Book Library Classes and Functions
 '''
 
-#I moved the classes and function into their own file to clean
-#things up and make them look nicer
+
+
 
 #Book class with defining attributes
 class Book:
@@ -45,7 +45,7 @@ def add_book(book):
 def find_book(method):
 	''' This function returns books within the library given a category. Categories: name, author, year'''
 	if method == 'title':
-		user_find_name = input("Enter the book title (Eaxact): ")
+		user_find_name = input("Enter the title of the book you're looking for (Eaxact): ")
 		lib_file = open("book_library.csv")
 		library = lib_file.read()
 		library = library.split(",") #Split all items in the library by comma
@@ -58,33 +58,37 @@ def find_book(method):
 		return "Could not find book\n"
 		
 	elif method == 'author':
-		user_input = input("Enther the name of the author: ")
+		user_input = input("Enther the name of the author you're looking for: ")
 		library = open("book_library.csv")
 		book_list = library.read()
 		book_list = book_list.split(',')
 		token = 0
 		is_in = False
+		books = []
 		for i in book_list:
 			if user_input == i:
 				is_in = True
-				print(book_list[token-1].strip())
+				books.append(book_list[token-1].strip())
 			token += 1
 		if is_in == True:
-			return "\n"
+			print(f"---Here are the books we have from {user_input}---")
+			for i in books:
+				print(i)
+			return ''
 		elif is_in == False:
 			return"Could not find author\n"
 			
 	elif method == 'year':
-		user_find_year = input("Enter the publication year: ")
+		find_year = input("Enter the publication year you're looking for: ")
 		lib_file = open("book_library.csv")
 		library = lib_file.read()
 		library = library.split(",")
 		token = 1
 		book_with_year = False
 		for year in library:
-			if user_find_year == year:
+			if find_year == year:
 				if book_with_year == False:
-					print(f"Here are the books we have from {user_find_year}")
+					print(f"---Here are the books we have from {find_year}---")
 				print(f"{library[token-3]}, {library[token-2]}, {year}, {library[token]}")
 				book_with_year = True
 			token += 1
@@ -92,6 +96,27 @@ def find_book(method):
 			return ""
 		else:
 			return "There are no books in the library that were published in that year.\n"
+			
+	elif method == 'genre':
+		find_genre = input("Enter the genre you're looking for: ")
+		lib_file = open("book_library.csv")
+		library = lib_file.read()
+		library = library.split(",")
+		library.pop(0)
+		token = 2
+		book_with_genre = False
+		for genre in library:
+			if find_genre == genre.strip():
+				if book_with_genre == False:
+					print(f"---Here are the books we have from the {find_genre} genre---")
+				print(f"{library[token-5]}, {library[token-4]}, {library[token-3]}, {genre.strip()}")
+				book_with_genre = True
+			token += 1
+		if book_with_genre == True:
+			return ""
+		else:
+			print(library)
+			return "There are no books in the library with that genre\n"
 			
 def library_list(method):
 	if method == "title":
@@ -119,3 +144,34 @@ def library_list(method):
 				author_names.append(item)
 			token += 1
 		return ''
+		
+	elif method == "year":
+		lib_file = open('book_library.csv')
+		library = lib_file.read().split(',')
+		for i in range(3):
+			library.pop(0)
+		token = 0
+		years = []
+		for item in library:
+			if token % 4 == 0:
+				if item not in years:
+					print(library[token])
+				years.append(item)
+			token += 1
+		return ''
+		
+	elif method == "genre":
+		lib_file = open('book_library.csv')
+		library = lib_file.read().split(',')
+		for i in range(4):
+			library.pop(0)
+		token = 0
+		genres = []
+		for item in library:
+			if token % 4 == 0:
+				if item not in genres:
+					print((library[token].strip()))
+				genres.append(item)
+			token += 1
+		return ''
+			
